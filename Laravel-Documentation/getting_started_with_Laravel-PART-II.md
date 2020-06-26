@@ -174,12 +174,12 @@ Result:
 |--------|----------|-----------|----------|-----------------------------------------------|------------|
 | Domain | Method   | URI       | Name     | Action                                        | Middleware |
 |--------|----------|-----------|----------|-----------------------------------------------|------------|
-|        | GET|HEAD | /         |          | App\Http\Controllers\PagesController@index    | web        |
-|        | GET|HEAD | about     | about    | App\Http\Controllers\PagesController@about    | web        |
-|        | GET|HEAD | api/user  |          | Closure                                       | api        |
+|        | GET/HEAD | /         |          | App\Http\Controllers\PagesController@index    | web        |
+|        | GET/HEAD | about     | about    | App\Http\Controllers\PagesController@about    | web        |
+|        | GET/HEAD | api/user  |          | Closure                                       | api        |
 |        |          |           |          |                                               | auth:api   |
-|        | GET|HEAD | services  | services | App\Http\Controllers\PagesController@services | web        |
-|        | GET|HEAD | user/{id} |          | Closure                                       | web        |
+|        | GET/HEAD | services  | services | App\Http\Controllers\PagesController@services | web        |
+|        | GET/HEAD | user/{id} |          | Closure                                       | web        |
 |--------|----------|-----------|----------|-----------------------------------------------|------------|
 As we can see our current routes. As we have created a new controller **PostsController** therefore we are required to map our routes to access **PostsController**'s function. Curently we are declaring our routes in **web.php** in the following manner:
 ```php
@@ -190,23 +190,23 @@ But Implementing each and every routes manually can be tiresome. Therefore *Lara
 Route::resource('posts','PostsController');
 ```
 Here we can notice that instead of using *get, post, update, delete* we have used *resource* and we have passed two values in the parameter. The first value **posts** represents the controller and the second parameter is the controller **PostsController** whose function we want to include in route. Now we if we run the artisan route list command again we can see the following reslut:
-|--------|-----------|-------------------|---------------|-----------------------------------------------|------------|
+
 | Domain | Method    | URI               | Name          | Action                                        | Middleware |
 |--------|-----------|-------------------|---------------|-----------------------------------------------|------------|
-|        | GET|HEAD  | /                 |               | App\Http\Controllers\PagesController@index    | web        |
-|        | GET|HEAD  | about             | about         | App\Http\Controllers\PagesController@about    | web        |
-|        | GET|HEAD  | api/user          |               | Closure                                       | api        |
+|        | GET/HEAD  | /                 |               | App\Http\Controllers\PagesController@index    | web        |
+|        | GET/HEAD  | about             | about         | App\Http\Controllers\PagesController@about    | web        |
+|        | GET/HEAD  | api/user          |               | Closure                                       | api        |
 |        |           |                   |               |                                               | auth:api   |
-|        | GET|HEAD  | posts             | posts.index   | App\Http\Controllers\PostsController@index    | web        |
+|        | GET/HEAD  | posts             | posts.index   | App\Http\Controllers\PostsController@index    | web        |
 |        | POST      | posts             | posts.store   | App\Http\Controllers\PostsController@store    | web        |
-|        | GET|HEAD  | posts/create      | posts.create  | App\Http\Controllers\PostsController@create   | web        |
-|        | GET|HEAD  | posts/{post}      | posts.show    | App\Http\Controllers\PostsController@show     | web        |
-|        | PUT|PATCH | posts/{post}      | posts.update  | App\Http\Controllers\PostsController@update   | web        |
+|        | GET/HEAD  | posts/create      | posts.create  | App\Http\Controllers\PostsController@create   | web        |
+|        | GET/HEAD  | posts/{post}      | posts.show    | App\Http\Controllers\PostsController@show     | web        |
+|        | PUT/PATCH | posts/{post}      | posts.update  | App\Http\Controllers\PostsController@update   | web        |
 |        | DELETE    | posts/{post}      | posts.destroy | App\Http\Controllers\PostsController@destroy  | web        |
-|        | GET|HEAD  | posts/{post}/edit | posts.edit    | App\Http\Controllers\PostsController@edit     | web        |
-|        | GET|HEAD  | services          | services      | App\Http\Controllers\PagesController@services | web        |
-|        | GET|HEAD  | user/{id}         |               | Closure                                       | web        |
-|--------|-----------|-------------------|---------------|-----------------------------------------------|------------|
+|        | GET/HEAD  | posts/{post}/edit | posts.edit    | App\Http\Controllers\PostsController@edit     | web        |
+|        | GET/HEAD  | services          | services      | App\Http\Controllers\PagesController@services | web        |
+|        | GET/HEAD  | user/{id}         |               | Closure                                       | web        |
+
 From the above result we can see that all the functions route in the *PostsController* are listed as route and all of the routes from *PostsController** has **posts** at the beginning.
 
 ### 4. Fetching Data eith Eloquent
