@@ -179,6 +179,7 @@ Result:
 |        |          |           |          |                                               | auth:api   |
 |        | GET/HEAD | services  | services | App\Http\Controllers\PagesController@services | web        |
 |        | GET/HEAD | user/{id} |          | Closure                                       | web        |
+
 As we can see our current routes. As we have created a new controller **PostsController** therefore we are required to map our routes to access **PostsController**'s function. Curently we are declaring our routes in **web.php** in the following manner:
 ```php
 Route::get('/about', 'PagesController@about')->name('about');
