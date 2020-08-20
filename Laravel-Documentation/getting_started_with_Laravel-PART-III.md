@@ -112,6 +112,30 @@ public function store(Request $request)
 ```
 Now if we create a new post and submit it than we can see that the new post has got a *user_id* who was logged in and created the post.
 
+>To run a specific migration if a column is required to be modified in the same table/model user the following command: **php artisan migrate --path=/database/migrations/2014_10_12_000000_create_users_table.php**
+>It will require the table to be dropped. And previously executed mgration of the same model have to be removed from DB **migrations** table.
+
+> Note: Authentication for **LOGIN** can easily be changed to any of user's prefered field instead of using the **email** field, as *Laravel's* default authentication works with **email** field. The process is described below.
+
+Laravel provides a flexible authentication system out-of-box.
+
+By default, the authentication system uses email for authentication. But it can be easily changed to any other fields like username or phone number.
+
+To change the default authentication you will need to do the following:
+
+1. In the login controller define a username function (Controller/Auth/LoginController.php)
+```php
+public function username()
+{
+    return 'username'; //or return the field which you want to use.
+}
+```
+    	
+2. Edit the login and registration views to change the email field to required authentication field.
+3. Add the authentication field in the database, by editing create_users_table migration or creating a new migration.
+
+That’s all you need to change and you’re ready.
+
 ### 2. Model Relationships
 In this section we will learn about how to make a relation between two tables, in our case we will be making relation between our *users* and *posts* table so that when logged in it will show the posts of the logged in user's posts.
 To create a relationship with the posts model let's open the **Post.php** file and add the following code:
