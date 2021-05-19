@@ -139,4 +139,7 @@ symlink('/home/cPanel_name/app-name/storage/app/public','/home/cPanel_name/publi
 and save it than upload it to **public_html** directory. Than in the browser do the following:
 with the host url call the php file **createSymlink.php** as *www.host-provider.com/createSymlink.php*. Now if everything runs correctly than we will see a new directory named **storage** created in **public_html**. Then delete the symlink file which we have just created.
 
+>NOTE to create a storage link from cPanel one can use the following method by accessing the trminal from **cPanel >> Home >> Advanced >> Terminal** and type the following command
+>```shell ln -s /home/asimgcco/asimgc-site/storage/app/public/ /home/asimgcco/public_html/devSite/storage ```
+>
 And the deployment is done.
