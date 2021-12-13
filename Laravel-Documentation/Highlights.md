@@ -30,3 +30,8 @@ npm install
 
 npm run dev
 ```
+Create Controller with resources
+
+```shell
+php artisan make:controller AppControllers\EducationInfoController --resource
+```
