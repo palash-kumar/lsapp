@@ -67,6 +67,15 @@ Route::get('/', 'PagesController@index');
 ```
 Now if we save the file and call the url from browser we will see **INDEX** written on the page which was sent by the controller. 
 
+Before doing so we are to make an small change for laravel 8.x.x onward:
+```php
+// go to the following location and open file
+app > providers > RouterServiceProvider.php
+
+// now uncomment the following line:
+protected $namespace = 'App\\Http\\Controllers';
+```
+
 Now as we want to forward a page instead of a simple text so we will be creating a view page for this purpose in our *pages* directory with the name **index.blade.php**; and we will write some basic code. For now we want our index page to display the app name, and we will find the app name in the **.env** file, to get the app name from the *.env* file to our index page 
 ```php
 <title>{{config('app.name', "LS-APP")}}</title>
