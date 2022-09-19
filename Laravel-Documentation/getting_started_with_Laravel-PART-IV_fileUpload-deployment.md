@@ -143,3 +143,10 @@ with the host url call the php file **createSymlink.php** as *www.host-provider.
 >``` ln -s /home/asimgcco/asimgc-site/storage/app/public/ /home/asimgcco/public_html/devSite/storage ```
 >
 And the deployment is done.
+
+### Cache 
+If an exception occurs such as *file_put_contents(/mnt/Projects/PHP-Projects/asimgc-site/storage/framework/sessions/nqML69kRMRZ54hnLtfnlwSuwTwe4eeazVHf4nX4F): failed to open stream: No such file or directory* than reconfiguring the cache will fix the issue. Use the following command to reconfigure the cache.
+
+```shell
+php artisan config:cache
+```
